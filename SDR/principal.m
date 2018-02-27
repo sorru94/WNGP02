@@ -25,11 +25,9 @@ fb = fc/2;
 fs = 15E3;
 
 disc_out = discrim(xfilt_dec);
-
 disc_out_filt = LP_filter(disc_out, fs/fb);
 
 N2 = 5;
-%No idea why, but the second decimation has something wrong!!!
 disc_out_filt_dec = Decim(disc_out_filt,N2); 
 
 fc = fc/N2;
