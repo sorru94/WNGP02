@@ -24,23 +24,26 @@ fb = fc/2;
 %cut off frequency for second filter
 fs = 15E3;
 
-%simpleSA(xfilt_dec,2^14,fc);
-
 disc_out = discrim(xfilt_dec);
-
-%simpleSA(disc_out,2^14,fc);
 
 disc_out_filt = LP_filter(disc_out, fs/fb);
 
-%simpleSA(disc_out_filt,2^14,fc);
-
 N2 = 5;
-%No idea why, but the second decimatiomn has something wrong!!!
+%No idea why, but the second decimation has something wrong!!!
 disc_out_filt_dec = Decim(disc_out_filt,N2); 
 
 fc = fc/N2;
 
+%last filter
+%european standard is different from american
+t = 50E-6;
+f3 = 1/(2*pi*t);
+a1 = exp(-2*pi*f3/fc);
+b = 1-a1;
+a = [1, -a1];
+final = filter(b,a,disc_out_filt_dec);
+
 %normalizing for the sound function
-mx = max(abs(disc_out_filt_dec));
+mx = max(abs(final));
 disc_out_filt_n = disc_out_filt_dec/mx;
 sound(disc_out_filt_n,fc);
