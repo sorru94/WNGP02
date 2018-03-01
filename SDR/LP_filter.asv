@@ -1,7 +1,7 @@
 function y = LP_filter(x, m)
 
 %FIR lowpass having Norder+1 taps
-blo = fir1(63, m ,'low');
+blo = fir1(63,m);
 %maybe put 'low'
 
 %note: output of the fir1 function are the filter coefficients returned as
