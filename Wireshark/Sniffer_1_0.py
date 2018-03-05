@@ -59,8 +59,15 @@ styp_n.append(styp1_n)
 styp_n.append(styp2_n)
 styp_n.append(styp3_n)
 
-typ_airt = list(typ_n)
-styp_airt = list(styp_n)
+typ_airt = [0,0,0]
+styp1_airt = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
+styp2_airt = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
+styp3_airt = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
+
+styp_airt = []
+styp_airt.append(styp1_airt)
+styp_airt.append(styp2_airt)
+styp_airt.append(styp3_airt)
 
 
 for i in range(0,count):
