@@ -9,17 +9,13 @@ var = 5
 
 t_start = time.strftime("%H:%M:%S",time.gmtime())
 
-#cap = pyshark.LiveCapture(interface='mon0',
-#        output_file="/home/simone/Documents/Wireless_Networking/Sniffing/test_file2.pcap")
-#cap.sniff(timeout=30*60) #Specify the amount of time you want to capture
+cap = pyshark.LiveCapture(interface='mon0',
+        output_file="/home/simone/Documents/Wireless_Networking/Sniffing/test_file2.pcap")
+cap.sniff(timeout=30*60) #Specify the amount of time you want to capture
 #File capture, not working
-cap = pyshark.FileCapture('test_file.pcap', only_summaries=False)
-#list(cap)
-#count = len(cap)
-#print(cap)
-
-print(cap[100000].wlan.fc_subtype)
-'''
+#cap = pyshark.FileCapture('test_file.pcap', only_summaries=False)
+count = len(cap)
+print(cap)
 
 t_end = time.strftime("%H:%M:%S",time.gmtime());
 
@@ -66,7 +62,7 @@ typ_airt = list(typ_n)
 styp_airt = list(styp_n)
 
 
-for i in range(0,100000):
+for i in range(0,cap):
     #Write the type and subtype of the packet i
     worksheet.write(row,col, cap[i].wlan.fc_type)
     worksheet.write(row,col+1, cap[i].wlan.fc_subtype)
@@ -127,4 +123,3 @@ worksheet.write(2,col+5,t_end)
 
 
 workbook.close()
-'''
