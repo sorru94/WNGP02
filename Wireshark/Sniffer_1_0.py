@@ -8,17 +8,18 @@ col = 0
 i = 0
 var = 5
 
-#t_start = time.strftime("%H:%M:%S",time.gmtime())
+t_start = time.strftime("%H:%M:%S",time.gmtime())
 
-#cap = pyshark.LiveCapture(interface='mon0',
-#        output_file="/home/simone/Documents/Wireless_Networking/Sniffing/test_file2.pcap")
-#cap.sniff(timeout=30*60) #Specify the amount of time you want to capture
-cap = pyshark.FileCapture('test_file.pcap', only_summaries=False)
-list(cap)
+cap = pyshark.LiveCapture(interface='mon0',
+        output_file="/home/simone/Documents/Wireless_Networking/Sniffing/test_file2.pcap")
+cap.sniff(timeout=30*60) #Specify the amount of time you want to capture
+#File capture, not working
+#cap = pyshark.FileCapture('test_file.pcap', only_summaries=False)
+#list(cap)
 count = len(cap)
 print(cap)
 
-#t_end = time.strftime("%H:%M:%S",time.gmtime());
+t_end = time.strftime("%H:%M:%S",time.gmtime());
 
 workbook = xlsxwriter.Workbook('hello3.xlsx')
 worksheet = workbook.add_worksheet()
@@ -65,24 +66,24 @@ styp_airt = list(styp_n)
 
 for i in range(0,count):
     #Write the type and subtype of the packet i
-    #worksheet.write(row,col, cap[i].wlan.fc_type)
-    #worksheet.write(row,col+1, cap[i].wlan.fc_subtype)
+    worksheet.write(row,col, cap[i].wlan.fc_type)
+    worksheet.write(row,col+1, cap[i].wlan.fc_subtype)
 
     #Store the type and subtype of the packet i
     typ = int(cap[i].wlan.fc_type)
     styp = int(cap[i].wlan.fc_subtype)
 
     #Write names ot type and subtype
-    #worksheet.write(row,col+2,types[typ])
-    #worksheet.write(row,col+3,subtypes[typ][styp])
+    worksheet.write(row,col+2,types[typ])
+    worksheet.write(row,col+3,subtypes[typ][styp])
 
     #increment counter of packets of a certain type (subtype)
     typ_n[typ] = typ_n[typ] + 1
     styp_n[typ][styp] = styp_n[typ][styp] +1
 
     #Write the DurationID and length of packet i
-    #worksheet.write(row,col+4,cap[i].wlan_radio.duration)
-    #worksheet.write(row,col+5,cap[i].length)
+    worksheet.write(row,col+4,cap[i].wlan_radio.duration)
+    worksheet.write(row,col+5,cap[i].length)
 
     t =  int(cap[i].wlan_radio.duration)
 
@@ -115,12 +116,12 @@ for p in range(0,len(types)):
     row = row +1
 
 #Write time of acquisition
-'''
+
 worksheet.write(0,col+4,"Times of greenwich")
 worksheet.write(1,col+4,"t start")
 worksheet.write(1,col+5,t_start)
 worksheet.write(2,col+4,"t end")
 worksheet.write(2,col+5,t_end)
-'''
+
 
 workbook.close()
