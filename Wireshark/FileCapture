@@ -8,18 +8,12 @@ col = 0
 i = 0
 var = 5
 
-t_start = time.strftime("%H:%M:%S",time.gmtime())
-
-#Live capture
-cap = pyshark.LiveCapture(interface='mon0',
-        output_file="/home/simone/Documents/Wireless_Networking/Sniffing/live_capture1.pcap")
-cap.sniff(timeout=30*60) #Specify the amount of time you want to capture (s)
+#Capture from file
+cap = pyshark.FileCapture('live_capture1.pcap', only_summaries=False)
 count = len(cap)
 print(cap)
 
-t_end = time.strftime("%H:%M:%S",time.gmtime());
-
-workbook = xlsxwriter.Workbook('live_capture1.xlsx')
+workbook = xlsxwriter.Workbook('file_capture1.xlsx')
 worksheet = workbook.add_worksheet()
 
 worksheet.write('A1', "Frame Type")
@@ -119,13 +113,6 @@ for p in range(0,len(types)):
             worksheet.write(row,col+2,styp_airt[p][m])
             row = row +1
     row = row +1
-
-#Write time of acquisition
-worksheet.write(0,col+4,"Capture time (greenwich)")
-worksheet.write(1,col+4,"t start")
-worksheet.write(1,col+5,t_start)
-worksheet.write(2,col+4,"t end")
-worksheet.write(2,col+5,t_end)
 
 
 workbook.close()
