@@ -28,7 +28,7 @@ This command will generate two files, one .xlsx containing information about eac
 In order to execute **File Capture** the script it's sufficient the following shell command:
 
 ```
-sudo python3 Live_Capture.py file_name number_of_packets
+sudo python3 File_Capture.py file_name number_of_packets
 ```
 
 The arguments are optional, if they are left out the script will parse 100 packets from the file live_capture.py if it exists.
