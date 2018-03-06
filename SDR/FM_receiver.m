@@ -9,6 +9,8 @@ function [final,disc_out_filt,disc_out_filt_dec,disc_out,xfilt_dec,xfilt] = FM_r
 
 x = loadFile(x);
 
+
+
 %initial sampling frequency, that is, 2.4E6
 fc = fs;
 %sampling frequency for the filters (Half-Band)
@@ -18,10 +20,12 @@ fb = fc/2;
 %decimation process.
 fs = B1;
 
+simpleSA(x,2^14,fc);
 %Decimation: Lowpass and downsampling
 %b_lp = fir1(Norder, 2*fc/fs)
 xfilt = LP_filter(x, fs/fb);
 xfilt_dec = downsample(xfilt,N1);
+
 
 %intermediate sampling frequency
 fc = fc/N1;
@@ -30,12 +34,15 @@ fb = fc/2;
 %cut off frequency for second filter
 fs = B2;
 
+simpleSA(xfilt_dec,2^14,fc);
 %FM -> AM
 disc_out = discrim(xfilt_dec);
 disc_out_filt = LP_filter(disc_out, fs/fb);
 disc_out_filt_dec = downsample(disc_out_filt,N2);
 
 fc = fc/N2;
+
+simpleSA(disc_out_filt_dec,2^14,fc);
 
 %last filter -> De-emphasis filter = decreases the magnitude of higher
 %frequencies and optimizes the SNR
