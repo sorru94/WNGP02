@@ -1,6 +1,8 @@
 ## WNGP02
 
-Simple python script to sniff packets from wlan networks. It requires tshark to be installed and, in the live capture version to be run as root. Furthermore for the live capture the WiFi adaptor should be set in monitor mode.
+Simple python script to sniff frames from wlan networks. It stores in a .xlsx file information about length, airtime and type of each frame.
+
+It requires tshark to be installed and, in the live capture version to be run as root. Furthermore for the live capture the WiFi adaptor should be set in monitor mode.
 
 The required libraries are: 
 
