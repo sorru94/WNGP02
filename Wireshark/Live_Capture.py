@@ -3,17 +3,25 @@ import time
 import pyshark
 import xlsxwriter
 import copy
+import sys
 row = 1
 col = 0
 i = 0
 var = 5
+
+if(len(sys.argv)!=1)
+    t_cap = 60
+else:
+    t_cap = int(sys.argv[1])
+
 
 t_start = time.strftime("%H:%M:%S",time.gmtime())
 
 #Live capture
 cap = pyshark.LiveCapture(interface='mon0',
         output_file="/home/simone/Documents/Wireless_Networking/Sniffing/live_capture1.pcap")
-cap.sniff(timeout=30*60) #Specify the amount of time you want to capture (s)
+cap.sniff(timeout=t_cap)
+#cap.sniff(timeout=30*60) #Specify the amount of time you want to capture (s)
 count = len(cap)
 print(cap)
 

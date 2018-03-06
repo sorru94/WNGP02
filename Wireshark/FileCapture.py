@@ -3,14 +3,21 @@ import time
 import pyshark
 import xlsxwriter
 import copy
+import sys
 row = 1
 col = 0
 i = 0
 var = 5
 
+if(len(sys.argv)!=2)
+    file_cap = 'live_capture1.pcap'
+    count = 100
+else:
+    file_cap = str(sys.argv[1])
+    count = int(sys.argv[2])
+
 #Capture from file
 cap = pyshark.FileCapture('live_capture1.pcap', only_summaries=False)
-count = len(cap)
 print(cap)
 
 workbook = xlsxwriter.Workbook('file_capture1.xlsx')
