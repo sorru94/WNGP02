@@ -1,4 +1,4 @@
-function res = Script(a, M, CB, Pl, DelProf, Dist, num)
+function res = Helper_efficiency_calc(a, M, CB, Pl, DelProf, Dist, num)
 
 M = M-1;
 cfgVHT = wlanVHTConfig;         

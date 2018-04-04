@@ -10,7 +10,7 @@ l = [];
 %NB MCS tested is (M-1)
 for M = 1:10
     for SNR = 6:45
-        result1(SNR, M) = Script(SNR, M, ChannelBandwidth, payload, DelayProfile, TransmitReceiveDistance,numPackets);
+        result1(SNR, M) = Helper_efficiency_calc(SNR, M, ChannelBandwidth, payload, DelayProfile, TransmitReceiveDistance,numPackets);
        l(1) = SNR;
         l(2) = M-1;
     end
@@ -29,7 +29,7 @@ l = [];
 %NB MCS tested is (M-1)
 for M = 1:10
     for SNR = 6:45
-        result2(SNR, M) = Script(SNR, M, ChannelBandwidth, payload, DelayProfile, TransmitReceiveDistance,numPackets);
+        result2(SNR, M) = Helper_efficiency_calc(SNR, M, ChannelBandwidth, payload, DelayProfile, TransmitReceiveDistance,numPackets);
        l(1) = SNR;
         l(2) = M-1;
     end
@@ -49,7 +49,7 @@ l = [];
 %NB MCS tested is (M-1)
 for M = 1:10
     for SNR = 6:45
-        result3(SNR, M) = Script(SNR, M, ChannelBandwidth, payload, DelayProfile, TransmitReceiveDistance,numPackets);
+        result3(SNR, M) = Helper_efficiency_calc(SNR, M, ChannelBandwidth, payload, DelayProfile, TransmitReceiveDistance,numPackets);
        l(1) = SNR;
         l(2) = M-1;
     end
@@ -68,7 +68,7 @@ l = [];
 %NB MCS tested is (M-1)
 for M = 1:10
     for SNR = 6:45
-        result4(SNR, M) = Script(SNR, M, ChannelBandwidth, payload, DelayProfile, TransmitReceiveDistance,numPackets);
+        result4(SNR, M) = Helper_efficiency_calc(SNR, M, ChannelBandwidth, payload, DelayProfile, TransmitReceiveDistance,numPackets);
        l(1) = SNR;
         l(2) = M-1;
     end
@@ -87,7 +87,7 @@ l = [];
 %NB MCS tested is (M-1)
 for M = 1:10
     for SNR = 6:45
-        result5(SNR, M) = Script(SNR, M, ChannelBandwidth, payload, DelayProfile, TransmitReceiveDistance,numPackets);
+        result5(SNR, M) = Helper_efficiency_calc(SNR, M, ChannelBandwidth, payload, DelayProfile, TransmitReceiveDistance,numPackets);
        l(1) = SNR;
         l(2) = M-1;
     end
