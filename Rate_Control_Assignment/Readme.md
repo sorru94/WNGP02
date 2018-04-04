@@ -19,3 +19,4 @@ And the returned values are:
 - Throughput of the simulation
 - Bit error rate of the simulation
 - Array containing the SNR measured for each packet
+
