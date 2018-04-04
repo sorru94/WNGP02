@@ -1,4 +1,4 @@
-function [dataRate,ErrRate, snrMeasured, dw_threshold] = TransmitRateControl_NDira(CB, Pl, DelProf, Dist, num, jump)
+function [dataRate,ErrRate, snrMeasured] = TransmitRateControl_NDira(CB, Pl, DelProf, Dist, num)
 %CB = channel bandwidth ('CBW40')
 %Pl = payload (4096)
 %DelProf = DelayProfile ('Model-D')
@@ -46,7 +46,7 @@ if walkSNR
     
     % The maxJump controls the maximum SNR difference between one
     % packet and the next (when adding the random walk, done for each packet individually)
-    maxJump = jump;          %0.5,10;
+    maxJump = 0.5;          %0.5,10;
 else
     % Fixed mean SNR value for each transmitted packet. All the variability
     % in SNR comes from a time varying radio channel
@@ -272,7 +272,7 @@ ErrRate = numel(find(ber))/numPackets;
 disp(['Overall data rate: ' num2str(8*cfgVHT.APEPLength*(numPackets-numel(find(ber)))/sum(packetLength)/1e6) ' Mbps']);
 disp(['Overall packet error rate: ' num2str(numel(find(ber))/numPackets)]);
 
-%plotResults(ber,packetLength,snrMeasured,MCS,cfgVHT);
+plotResults(ber,packetLength,snrMeasured,MCS,cfgVHT);
 
 % Restore default stream
 rng(s);
